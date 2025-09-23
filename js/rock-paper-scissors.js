@@ -174,6 +174,7 @@ function reloadPage() {
                             newGameBtn.textContent = "NEW GAME";
                             newGameBtn.id = "newGameBtn";
                             runningScoreBox.appendChild(newGameBtn);
+                            
                     }
                     newGameBtn.addEventListener('click', reloadPage());
                     
