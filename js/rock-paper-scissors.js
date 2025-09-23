@@ -15,23 +15,19 @@ function getComputerChoice() {
 	// console.log("random number:", randomNum);
     if (randomNum < 34){ 
         rockBtn.style.border = "blue solid 3px";
-        // rockBtn.style.color = "white";
         return "Rock"
     } else if ((randomNum >= 34) && (randomNum < 67)) {
         paperBtn.style.border = "blue solid 3px";
-        // paperBtn.style.color = "white";
         return "Paper"
     } else {
         scissorsBtn.style.border = "blue solid 3px";
-        // scissorsBtn.style.color = "white";
         return "Scissors"
     }
 }
 
-function getHumanChoice() {
+// function getHumanChoice() {
     // return prompt("Please enter you choice of rock, paper, or scissors", defaultValue="");
-    
-}
+//}
 
 function playGame(){
     let humanScore = 0
@@ -136,20 +132,13 @@ function reloadPage() {
         const roundResultMsg = document.querySelector("#roundResultMsg");
         const gameButtons = document.querySelectorAll(".gameButton");
         const runningScoreBox = document.querySelector(".runningScoreBox");
-        const rockBtn = document.querySelector("#rockBtn");
-        const paperBtn = document.querySelector("#paperBtn");
-        const scissorsBtn = document.querySelector("#scissorsBtn");
-        const nextRndBtn = document.querySelector("#nextRndBtn");
-        const roundNum = document.querySelector("#roundNum");
         const compScore = document.querySelector("#computerScore");
         const humScore = document.querySelector("#humanScore");
         const para = document.createElement("p");
         let humanSelection = "";
         let computerSelection = "";
 
-        //while ((humanScore < 5) && (computerScore < 5)) {
-            nextRndBtn.style.display = "none";
-            
+
             gameButtons.forEach((gameButton) => {
                 gameButton.addEventListener("click", (e) => {
                     gameButtons.forEach(btn => {btn.disabled = true;});
@@ -170,34 +159,18 @@ function reloadPage() {
                                 para.textContent = "Game Over: SORRY YOU LOST !!!";
                             }
                             runningScoreBox.appendChild(para);
-                            const newGameBtn = document.createElement("button");
-                            newGameBtn.textContent = "NEW GAME";
-                            newGameBtn.id = "newGameBtn";
-                            runningScoreBox.appendChild(newGameBtn);
+                            //const newGameBtn = document.createElement("button");
+                            //newGameBtn.textContent = "NEW GAME";
+                            //newGameBtn.id = "newGameBtn";
+                            //runningScoreBox.appendChild(newGameBtn);
                             
                     }
-                    newGameBtn.addEventListener('click', reloadPage());
-                    
-                    
-                    //nextRndBtn.disabled = false;
-                    //nextRndBtn.style.display = "block";
-                    // rockBtn.style.display = "none";
-                    // paperBtn.style.display = "none";
-                    // scissorsBtn.style.display = "none";
-                    // return;
+                    //newGameBtn.addEventListener('click', reloadPage());
                 });
-            });
-            
-            
-       //}
-    
+            });    
         
-
-
 
         // console.log("****ROUND#:", `${i+1}`, "****")
-
-        
         // console.log("--------------------------------------------------")
         // console.log("%cGAME OVER", "color: pink; font-weight: bold;")
         // console.log("%cFINAL SCORES - Computer Score:", "color: pink; font-weight: bold;", computerScore)
