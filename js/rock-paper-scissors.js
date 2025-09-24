@@ -135,6 +135,7 @@ function reloadPage() {
         const compScore = document.querySelector("#computerScore");
         const humScore = document.querySelector("#humanScore");
         const para = document.createElement("p");
+        const newGameBtn = document.createElement("button");
         let humanSelection = "";
         let computerSelection = "";
 
@@ -142,16 +143,17 @@ function reloadPage() {
             gameButtons.forEach((gameButton) => {
                 gameButton.addEventListener("click", (e) => {
                     gameButtons.forEach(btn => {btn.disabled = true;});
-                    e.target.style.border = "red solid 3px";
-                    humanSelection = capitalize(e.target.textContent);
-                    computerSelection = getComputerChoice();
-                    roundMsg.textContent = "Computer chose: " + computerSelection + " | You chose: " + humanSelection;
                     if ((humanScore < 5) && (computerScore < 5)) {
+                        e.target.style.border = "red solid 3px";
+                        humanSelection = capitalize(e.target.textContent);
+                        computerSelection = getComputerChoice();
+                        roundMsg.textContent = "Computer chose: " + computerSelection + " | You chose: " + humanSelection;
                         playRound(humanSelection, computerSelection);
                         gameButtons.forEach(btn => { btn.disabled = false; btn.style.border = "none";});
-                    } else {
+                    } 
+                    if ((humanScore === 5) || (computerScore === 5)) {
                             gameButtons.forEach(btn => { btn.disabled = true; btn.style.border = "none";});
-                            fadeOutDiv(".gameButtons", 200, 1500);
+                            fadeOutDiv(".gameButtons", 200, 800);
                             roundResultMsg.remove();
                             if (humanScore === 5) {
                                 para.textContent = "Game Over: YOU WIN !!!";
@@ -159,13 +161,13 @@ function reloadPage() {
                                 para.textContent = "Game Over: SORRY YOU LOST !!!";
                             }
                             runningScoreBox.appendChild(para);
-                            //const newGameBtn = document.createElement("button");
-                            //newGameBtn.textContent = "NEW GAME";
-                            //newGameBtn.id = "newGameBtn";
-                            //runningScoreBox.appendChild(newGameBtn);
+                            newGameBtn.textContent = "NEW GAME";
+                            newGameBtn.id = "newGameBtn";
+                            runningScoreBox.appendChild(newGameBtn);
+                            newGameBtn.addEventListener('click', reloadPage());
                             
                     }
-                    //newGameBtn.addEventListener('click', reloadPage());
+                    
                 });
             });    
         
